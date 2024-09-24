@@ -85,11 +85,19 @@ router.post('/create', upload.single('image'), async (req, res) => {
 router.put('/update/:id', upload.single('image'), (req, res) => {
   const id = req.params.id;
 
-  if(req.file){
-    console.log('File uploaded ' + req.file.filename);
-  }
-  
-  // to-do: verify :id is a number
+ // capture the inputs
+
+ // validate the id
+
+ // validate required fields
+
+ // Find the contact by id (if not found, return 404)
+
+ // store filename in a variable
+
+ // if file was uploaded, save that filename, and delete the old file. If not, save the old filename
+
+ // Update the database record with prisma (saving either the old or new filename)
 
   res.send('Update a contact by ' + id);
 });
@@ -98,7 +106,13 @@ router.put('/update/:id', upload.single('image'), (req, res) => {
 router.delete('/delete/:id', (req, res) => {
   const id = req.params.id;
 
-  // to-do: verify :id is a number
+  // verify id is a number
+
+  // Find the contact by id (if not found, return 404)
+
+  // delete the record with prisma
+
+  // delete the file (if contact has one)
 
   res.send('Delete a contact by id ' + id);
 });
