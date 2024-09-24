@@ -57,6 +57,16 @@ router.post('/create', upload.single('image'), async (req, res) => {
   const { firstName, lastName, phone, email, title } = req.body;  
   const filename = req.file ? req.file.filename : null;
   
+  // Validate inputs
+  if(!firstName || !lastName || !phone || !email) {
+    // to-do: delete uploaded file
+
+    res.status(400).send('Required fields must have a value.');
+    return;
+  }
+
+  // to-do: validate proper email, proper phone number, only .jpg/.png/.gig/, file size limit (5MB)
+
   const contact = await prisma.contact.create({
     data: {
       firstName: firstName,
